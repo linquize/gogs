@@ -29,11 +29,11 @@
                             {{else}}
                             <span class="label label-green label-radius">{{$.i18n.Tr "repo.release.stable"}}</span>
                             {{end}}
-                            <a class="tag" href="{{$.RepoLink}}/src/{{.TagName}}" rel="nofollow"><i class="fa fa-tag"></i> {{.TagName}}</a>
-                            <a class="commit" href="{{$.RepoLink}}/src/{{.Sha1}}" rel="nofollow"><i class="fa fa-code"></i> {{ShortSha .Sha1}}</a>
+                            <a class="tag" href="{{$.RepoLink}}/blob/{{.TagName}}" rel="nofollow"><i class="fa fa-tag"></i> {{.TagName}}</a>
+                            <a class="commit" href="{{$.RepoLink}}/blob/{{.Sha1}}" rel="nofollow"><i class="fa fa-code"></i> {{ShortSha .Sha1}}</a>
                         </div>
                         <div class="grid-9-12 release-detail left">
-                            <h4 class="title"><a href="{{$.RepoLink}}/src/{{.TagName}}">{{.Title}}</a> <small>(<a href="{{$.RepoLink}}/releases/edit/{{.TagName}}" rel="nofollow">{{$.i18n.Tr "repo.release.edit"}}</a>)</small></h4>
+                            <h4 class="title"><a href="{{$.RepoLink}}/blob/{{.TagName}}">{{.Title}}</a> <small>(<a href="{{$.RepoLink}}/releases/edit/{{.TagName}}" rel="nofollow">{{$.i18n.Tr "repo.release.edit"}}</a>)</small></h4>
                             <p class="info">
                                 <span class="author"><img class="avatar-20" src="{{.Publisher.AvatarLink}}">&nbsp;&nbsp;
                                 <a href="{{AppSubUrl}}/{{.Publisher.Name}}">{{.Publisher.Name}}</a></span>
@@ -51,10 +51,10 @@
                         </div>
                         {{else}}
                         <div class="grid-1-6 text-right release-meta">
-                            <a class="commit" href="{{$.RepoLink}}/src/{{.Sha1}}" rel="nofollow"><i class="fa fa-code"></i> {{ShortSha .Sha1}}</a>
+                            <a class="commit" href="{{$.RepoLink}}/blob/{{.Sha1}}" rel="nofollow"><i class="fa fa-code"></i> {{ShortSha .Sha1}}</a>
                         </div>
                         <div class="grid-9-12 release-detail left">
-                            <h5 class="title"><a href="{{$.RepoLink}}/src/{{.TagName}}" rel="nofollow">{{.TagName}}</a> <i class="fa fa-tag"></i></h5>
+                            <h5 class="title"><a href="{{$.RepoLink}}/blob/{{.TagName}}" rel="nofollow">{{.TagName}}</a> <i class="fa fa-tag"></i></h5>
                             <p class="download">
                                 <a class="download-link" href="{{$.RepoLink}}/archive/{{.TagName}}.zip" rel="nofollow"><i class="fa fa-download"></i> ZIP</a>
                                 <a class="download-link" href="{{$.RepoLink}}/archive/{{.TagName}}.tar.gz"><i class="fa fa-download"></i> TAR.GZ</a>

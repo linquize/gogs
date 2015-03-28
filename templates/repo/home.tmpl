@@ -31,19 +31,19 @@
                             </ul>
                             <ul class="menu menu-vertical switching-list {{if .IsTag}}hide{{end}}" id="repo-branch-list">
                                 {{range .Branches}}
-                                <li {{if eq . $.BranchName}}class="checked"{{end}}><a href="{{$.RepoLink}}/src/{{EscapePound .}}"><i class="octicon octicon-check"></i>{{.}}</a></li>
+                                <li {{if eq . $.BranchName}}class="checked"{{end}}><a href="{{$.RepoLink}}/blob/{{EscapePound .}}"><i class="octicon octicon-check"></i>{{.}}</a></li>
                                 {{end}}
                             </ul>
                             <ul class="menu menu-vertical switching-list {{if not .IsTag}}hide{{end}}" id="repo-tag-list">
                                 {{range .Tags}}
-                                <li {{if eq . $.BranchName}}class="checked"{{end}}><a href="{{$.RepoLink}}/src/{{EscapePound .}}"><i class="octicon octicon-check"></i>{{.}}</a></li>
+                                <li {{if eq . $.BranchName}}class="checked"{{end}}><a href="{{$.RepoLink}}/blob/{{EscapePound .}}"><i class="octicon octicon-check"></i>{{.}}</a></li>
                                 {{end}}
                             </ul>
                         </div>
                     </div>
                 </li>
                 <li id="repo-bread" class="breads">
-                    <a class="title bread" href="{{.RepoLink}}/src/{{EscapePound .BranchName}}">{{.Repository.Name}}</a>
+                    <a class="title bread" href="{{.RepoLink}}/blob/{{EscapePound .BranchName}}">{{.Repository.Name}}</a>
                     {{ $n := len .Treenames}}
                     {{ $l := Subtract $n 1}}
                     {{range $i, $v := .Treenames}}

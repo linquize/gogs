@@ -30,14 +30,14 @@ func Home(ctx *middleware.Context) {
 	repoName := ctx.Repo.Repository.Name
 
 	repoLink := ctx.Repo.RepoLink
-	branchLink := ctx.Repo.RepoLink + "/src/" + branchName
+	branchLink := ctx.Repo.RepoLink + "/blob/" + branchName
 	rawLink := ctx.Repo.RepoLink + "/raw/" + branchName
 
 	// Get tree path
 	treename := ctx.Repo.TreeName
 
 	if len(treename) > 0 && treename[len(treename)-1] == '/' {
-		ctx.Redirect(repoLink + "/src/" + branchName + "/" + treename[:len(treename)-1])
+		ctx.Redirect(repoLink + "/blob/" + branchName + "/" + treename[:len(treename)-1])
 		return
 	}
 

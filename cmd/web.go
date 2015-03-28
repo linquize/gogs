@@ -450,7 +450,7 @@ func runWeb(ctx *cli.Context) {
 		m.Get("/milestone2/", repo.Milestones2)
 
 		m.Group("", func() {
-			m.Get("/src/*", repo.Home)
+			m.Get("/blob/*", repo.Home)
 			m.Get("/raw/*", repo.SingleDownload)
 			m.Get("/commits/*", repo.RefCommits)
 			m.Get("/commit/*", repo.Diff)

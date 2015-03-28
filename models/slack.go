@@ -73,7 +73,7 @@ func getSlackPushPayload(p *Payload, slack *Slack) (*SlackPayload, error) {
 	}
 
 	repoLink := SlackLinkFormatter(p.Repo.Url, p.Repo.Name)
-	branchLink := SlackLinkFormatter(p.Repo.Url+"/src/"+branchName, branchName)
+	branchLink := SlackLinkFormatter(p.Repo.Url + "/blob/" + branchName, branchName)
 	text := fmt.Sprintf("[%s:%s] %s pushed by %s", repoLink, branchLink, commitString, p.Pusher.Name)
 	var attachmentText string
 

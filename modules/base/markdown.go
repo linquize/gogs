@@ -101,7 +101,7 @@ func (options *CustomRender) Link(out *bytes.Buffer, link []byte, title []byte, 
 
 func (options *CustomRender) Image(out *bytes.Buffer, link []byte, title []byte, alt []byte) {
 	if len(link) > 0 && !isLink(link) {
-		link = []byte(path.Join(strings.Replace(options.urlPrefix, "/src/", "/raw/", 1), string(link)))
+		link = []byte(path.Join(strings.Replace(options.urlPrefix, "/blob/", "/raw/", 1), string(link)))
 	}
 
 	options.Renderer.Image(out, link, title, alt)
