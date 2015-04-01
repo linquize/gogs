@@ -46,6 +46,8 @@ func Create(ctx *middleware.Context) {
 	ctx.Data["Title"] = ctx.Tr("new_repo")
 
 	// Give default value for template to render.
+	ctx.Data["private"] = setting.Cfg.Section("server").Key("INHOUSE_MODE").MustBool()
+	ctx.Data["InhouseMode"] = setting.Cfg.Section("server").Key("INHOUSE_MODE").MustBool()
 	ctx.Data["gitignore"] = "0"
 	ctx.Data["license"] = "0"
 	ctx.Data["Gitignores"] = models.Gitignores

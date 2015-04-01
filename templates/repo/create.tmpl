@@ -51,6 +51,8 @@
                 <label class="left" for="desc">{{.i18n.Tr "repo.repo_desc"}}</label>
                 <textarea class="ipt ipt-large ipt-radius {{if .Err_Description}}ipt-error{{end}}" id="desc" name="desc">{{.desc}}</textarea>
             </div>
+            {{if .InhouseMode}}
+            {{else}}
             <div class="field">
                 <label for="lang">{{.i18n.Tr "repo.repo_lang"}}</label>
                 <select id="lang" name="gitignore">
@@ -72,6 +74,7 @@
                 <input class="ipt-chk" id="init-readme" name="auto_init" type="checkbox" {{if .auto_init}}checked{{end}} />
                 <strong>{{.i18n.Tr "repo.init_readme"}}</strong>
             </div>
+            {{end}}
             <div class="field">
                 <label></label>
                 <button class="btn btn-large btn-blue btn-radius">{{.i18n.Tr "repo.create_repo"}}</button>

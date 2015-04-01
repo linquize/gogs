@@ -8,6 +8,7 @@ package cron
 import (
 	"sort"
 	"time"
+	"github.com/gogits/gogs/modules/log"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
@@ -133,6 +134,7 @@ func (c *Cron) Entries() []*Entry {
 
 // Start the cron scheduler in its own go-routine.
 func (c *Cron) Start() {
+	log.Info("Cron::Start")
 	c.running = true
 	go c.run()
 }
