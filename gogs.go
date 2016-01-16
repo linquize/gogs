@@ -1,3 +1,4 @@
+//go:generate goversioninfo -icon=icon.ico
 // +build go1.4
 
 // Copyright 2014 The Gogs Authors. All rights reserved.
