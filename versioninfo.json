@@ -1,0 +1,43 @@
+{
+    "FixedFileInfo": {
+        "FileVersion": {
+            "Major": 0,
+            "Minor": 12,
+            "Patch": 3,
+            "Build": 0
+        },
+        "ProductVersion": {
+            "Major": 0,
+            "Minor": 12,
+            "Patch": 3,
+            "Build": 0
+        },
+        "FileFlagsMask": "3f",
+        "FileFlags ": "00",
+        "FileOS": "040004",
+        "FileType": "01",
+        "FileSubType": "00"
+    },
+    "StringFileInfo": {
+        "Comments": "Gogs",
+        "CompanyName": "Gogs",
+        "FileDescription": "Gogs",
+        "FileVersion": "v0.12.3.0",
+        "InternalName": "gogs.exe",
+        "LegalCopyright": "Copyright (c) 2014-2021 Gogs Authors",
+        "LegalTrademarks": "",
+        "OriginalFilename": "gogs",
+        "PrivateBuild": "",
+        "ProductName": "Gogs",
+        "ProductVersion": "v0.12.3.0",
+        "SpecialBuild": ""
+    },
+    "VarFileInfo": {
+        "Translation": {
+            "LangID": "0409",
+            "CharsetID": "04B0"
+        }
+    },
+    "IconPath": "",
+    "ManifestPath": ""
+}

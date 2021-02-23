@@ -17,8 +17,10 @@ import (
 	"gogs.io/gogs/internal/conf"
 )
 
+//go:generate goversioninfo -icon=public/img/favicon.ico -gofile=versioninfo.go -platform-specific
+
 func init() {
-	conf.App.Version = "0.12.3"
+	conf.App.Version = versionInfo.StringFileInfo.ProductVersion
 }
 
 func main() {
