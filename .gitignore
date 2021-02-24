@@ -16,3 +16,6 @@ output*
 *.sublime-project
 *.sublime-workspace
 /release
+/conf_gen.go
+/public_gen.go
+/templates_gen.go

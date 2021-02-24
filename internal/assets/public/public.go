@@ -14,7 +14,13 @@ import (
 	"gogs.io/gogs/internal/assets"
 )
 
-//go:generate go-bindata -nomemcopy -pkg=public -ignore="\\.DS_Store|less" -prefix=../../../public -debug=false -o=public_gen.go ../../../public/...
+type AssetInterface interface {
+	Asset(name string) ([]byte, error)
+	AssetDir(name string) ([]string, error)
+	AssetInfo(name string) (os.FileInfo, error)
+}
+
+var AssetPtr AssetInterface
 
 /*
 	This file is a modified version of https://github.com/go-bindata/go-bindata/pull/18.
@@ -89,7 +95,7 @@ func (f *file) Stat() (os.FileInfo, error) {
 			size: int64(childCount),
 		}, nil
 	}
-	return AssetInfo(f.name)
+	return AssetPtr.AssetInfo(f.name)
 }
 
 // fileSystem implements the http.FileSystem interface.
@@ -101,7 +107,7 @@ func (f *fileSystem) Open(name string) (http.File, error) {
 	}
 
 	// Attempt to get it as a file
-	p, err := Asset(name)
+	p, err := AssetPtr.Asset(name)
 	if err != nil && !assets.IsErrNotFound(err) {
 		return nil, err
 	} else if err == nil {
@@ -112,7 +118,7 @@ func (f *fileSystem) Open(name string) (http.File, error) {
 	}
 
 	// Attempt to get it as a directory
-	paths, err := AssetDir(name)
+	paths, err := AssetPtr.AssetDir(name)
 	if err != nil && !assets.IsErrNotFound(err) {
 		return nil, err
 	}
@@ -120,7 +126,7 @@ func (f *fileSystem) Open(name string) (http.File, error) {
 	infos := make([]os.FileInfo, len(paths))
 	for i, path := range paths {
 		path = filepath.Join(name, path)
-		info, err := AssetInfo(path)
+		info, err := AssetPtr.AssetInfo(path)
 		if err != nil {
 			if !assets.IsErrNotFound(err) {
 				return nil, err

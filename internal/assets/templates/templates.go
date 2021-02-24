@@ -17,7 +17,12 @@ import (
 	"gogs.io/gogs/internal/osutil"
 )
 
-//go:generate go-bindata -nomemcopy -ignore="\\.DS_Store" -pkg=templates -prefix=../../../templates -debug=false -o=templates_gen.go ../../../templates/...
+type AssetInterface interface {
+	Asset(name string) ([]byte, error)
+	AssetNames() []string
+}
+
+var AssetPtr AssetInterface
 
 // fileSystem implements the macaron.TemplateFileSystem interface.
 type fileSystem struct {
@@ -46,7 +51,7 @@ func NewTemplateFileSystem(dir, customDir string) macaron.TemplateFileSystem {
 	}
 
 	var files []macaron.TemplateFile
-	names := AssetNames()
+	names := AssetPtr.AssetNames()
 	for _, name := range names {
 		if !strings.HasPrefix(name, dir) {
 			continue
@@ -59,7 +64,7 @@ func NewTemplateFileSystem(dir, customDir string) macaron.TemplateFileSystem {
 		if osutil.IsFile(fpath) {
 			data, err = ioutil.ReadFile(fpath)
 		} else {
-			data, err = Asset(name)
+			data, err = AssetPtr.Asset(name)
 		}
 		if err != nil {
 			panic(err)
